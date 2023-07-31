@@ -29,7 +29,7 @@ def main():
 
     # Get user input and handle exceptions
     try:
-        encrypted_string = input("Enter an encrypted string: ")
+        encrypted_string = input("Enter an encrypted string: ").lower()
         if not encrypted_string.strip():
             raise ValueError("Error: The encrypted string cannot be empty.")
     except ValueError as ve:
@@ -38,13 +38,13 @@ def main():
 
     decrypted_string = decrypt_string(encrypted_string, decryption_dict)
 
-    # Display character counts
-    original_char_count = len(encrypted_string)
-    decrypted_char_count = len(decrypted_string)
+    # Count characters (excluding spaces) in the original and decrypted strings
+    original_char_count = sum(1 for char in encrypted_string if not char.isspace())
+    decrypted_char_count = sum(1 for char in decrypted_string if not char.isspace())
 
     print("Decrypted Text:", decrypted_string)
-    print("Character count in the original encrypted string:", original_char_count)
-    print("Character count in the decrypted string:", decrypted_char_count)
+    print("Character count in the original encrypted string (excluding spaces):", original_char_count)
+    print("Character count in the decrypted string (excluding spaces):", decrypted_char_count)
 
 
 if __name__ == "__main__":
