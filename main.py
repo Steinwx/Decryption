@@ -38,7 +38,13 @@ def main():
 
     decrypted_string = decrypt_string(encrypted_string, decryption_dict)
 
-    print("The Plain Text:", decrypted_string)
+    # Display character counts
+    original_char_count = len(encrypted_string)
+    decrypted_char_count = len(decrypted_string)
+
+    print("Decrypted Text:", decrypted_string)
+    print("Character count in the original encrypted string:", original_char_count)
+    print("Character count in the decrypted string:", decrypted_char_count)
 
 
 if __name__ == "__main__":
