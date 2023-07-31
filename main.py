@@ -27,11 +27,13 @@ def decrypt_string(encrypted_string, decryption_dict):
 def main():
     decryption_dict = {'*': 'a', '&': 'e', '#': 'i', '+': 'o', '!': 'u'}
 
-    encrypted_string = input("Enter a string to decrypt: ")
-
-    # Validate user input
-    if not encrypted_string:
-        print("Error: Please provide a valid encrypted string.")
+    # Get user input and handle exceptions
+    try:
+        encrypted_string = input("Enter an encrypted string: ")
+        if not encrypted_string.strip():
+            raise ValueError("Error: The encrypted string cannot be empty.")
+    except ValueError as ve:
+        print(ve)
         return
 
     decrypted_string = decrypt_string(encrypted_string, decryption_dict)
